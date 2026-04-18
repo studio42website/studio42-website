@@ -1,284 +1,284 @@
-const product = $derived(products[$page.params.slug] || null);<script>
-const product = $derived(products[$page.params.slug] || null);	import { page } from '$app/stores';
-const product = $derived(products[$page.params.slug] || null);	import { fade } from 'svelte/transition';
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	// Product data - in real app, fetch from database
-const product = $derived(products[$page.params.slug] || null);	const products = {
-const product = $derived(products[$page.params.slug] || null);		'lighting-v1': {
-const product = $derived(products[$page.params.slug] || null);			title: 'LIGHTING-V1',
-const product = $derived(products[$page.params.slug] || null);			price: '€50',
-const product = $derived(products[$page.params.slug] || null);			image: '/images/products/lighting-v1.jpg',
-const product = $derived(products[$page.params.slug] || null);			category: 'Lighting',
-const product = $derived(products[$page.params.slug] || null);			description: 'Handmade minimal lighting object with brushed aluminum finish.',
-const product = $derived(products[$page.params.slug] || null);			details: [
-const product = $derived(products[$page.params.slug] || null);				'Dimensions: 25cm H × 15cm W',
-const product = $derived(products[$page.params.slug] || null);				'Materials: Brushed aluminum, matte black steel',
-const product = $derived(products[$page.params.slug] || null);				'Hand-assembled in Ljubljana',
-const product = $derived(products[$page.params.slug] || null);				'Limited edition — only 20 units',
-const product = $derived(products[$page.params.slug] || null);				'Ships within 5-7 business days',
-const product = $derived(products[$page.params.slug] || null);			],
-const product = $derived(products[$page.params.slug] || null);			benefits: [
-const product = $derived(products[$page.params.slug] || null);				'Unique, one-of-a-kind craftsmanship',
-const product = $derived(products[$page.params.slug] || null);				'Celebrates material imperfections',
-const product = $derived(products[$page.params.slug] || null);				'Minimal design aesthetic',
-const product = $derived(products[$page.params.slug] || null);				'Durable construction',
-const product = $derived(products[$page.params.slug] || null);			],
-const product = $derived(products[$page.params.slug] || null);		},
-const product = $derived(products[$page.params.slug] || null);		'pen-holder': {
-const product = $derived(products[$page.params.slug] || null);			title: 'Pen Holder',
-const product = $derived(products[$page.params.slug] || null);			price: '€35',
-const product = $derived(products[$page.params.slug] || null);			image: '/images/products/pen-holder.jpg',
-const product = $derived(products[$page.params.slug] || null);			category: 'Desk',
-const product = $derived(products[$page.params.slug] || null);			description: 'Steel and wood desk organizer for minimal workspaces.',
-const product = $derived(products[$page.params.slug] || null);			details: [
-const product = $derived(products[$page.params.slug] || null);				'Dimensions: 12cm H × 8cm W',
-const product = $derived(products[$page.params.slug] || null);				'Materials: Matte steel, oak wood',
-const product = $derived(products[$page.params.slug] || null);				'Hand-finished',
-const product = $derived(products[$page.params.slug] || null);				'Holds 6-8 pens/pencils',
-const product = $derived(products[$page.params.slug] || null);				'Ships within 3-5 business days',
-const product = $derived(products[$page.params.slug] || null);			],
-const product = $derived(products[$page.params.slug] || null);			benefits: [
-const product = $derived(products[$page.params.slug] || null);				'Keeps desk organized',
-const product = $derived(products[$page.params.slug] || null);				'Natural material palette',
-const product = $derived(products[$page.params.slug] || null);				'Perfect for minimal aesthetics',
-const product = $derived(products[$page.params.slug] || null);				'Long-lasting quality',
-const product = $derived(products[$page.params.slug] || null);			],
-const product = $derived(products[$page.params.slug] || null);		},
-const product = $derived(products[$page.params.slug] || null);		'candle-stand': {
-const product = $derived(products[$page.params.slug] || null);			title: 'Candle Stand',
-const product = $derived(products[$page.params.slug] || null);			price: '€45',
-const product = $derived(products[$page.params.slug] || null);			image: '/images/products/candle-stand.jpg',
-const product = $derived(products[$page.params.slug] || null);			category: 'Lighting',
-const product = $derived(products[$page.params.slug] || null);			description: 'Minimalist metal candle holder for ambient lighting.',
-const product = $derived(products[$page.params.slug] || null);			details: [
-const product = $derived(products[$page.params.slug] || null);				'Dimensions: 30cm H × 10cm W',
-const product = $derived(products[$page.params.slug] || null);				'Materials: Welded steel, powder coat',
-const product = $derived(products[$page.params.slug] || null);				'Hand-welded',
-const product = $derived(products[$page.params.slug] || null);				'Holds standard taper candles',
-const product = $derived(products[$page.params.slug] || null);				'Ships within 5-7 business days',
-const product = $derived(products[$page.params.slug] || null);			],
-const product = $derived(products[$page.params.slug] || null);			benefits: [
-const product = $derived(products[$page.params.slug] || null);				'Creates warm ambiance',
-const product = $derived(products[$page.params.slug] || null);				'Industrial aesthetic',
-const product = $derived(products[$page.params.slug] || null);				'Heavy-duty construction',
-const product = $derived(products[$page.params.slug] || null);				'Unique design',
-const product = $derived(products[$page.params.slug] || null);			],
-const product = $derived(products[$page.params.slug] || null);		},
-const product = $derived(products[$page.params.slug] || null);	};
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	$: product = products[$page.params.slug] || null;
-const product = $derived(products[$page.params.slug] || null);</script>
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);{#if product}
-const product = $derived(products[$page.params.slug] || null);	<div class="container" transition:fade={{ duration: 800 }}>
-const product = $derived(products[$page.params.slug] || null);		<div class="breadcrumb">
-const product = $derived(products[$page.params.slug] || null);			<a href="/products">Products</a>
-const product = $derived(products[$page.params.slug] || null);			<span>/</span>
-const product = $derived(products[$page.params.slug] || null);			<span>{product.title}</span>
-const product = $derived(products[$page.params.slug] || null);		</div>
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);		<div class="product-view">
-const product = $derived(products[$page.params.slug] || null);			<div class="product-image">
-const product = $derived(products[$page.params.slug] || null);				<img src={product.image} alt={product.title} />
-const product = $derived(products[$page.params.slug] || null);			</div>
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);			<div class="product-info">
-const product = $derived(products[$page.params.slug] || null);				<h1>{product.title}</h1>
-const product = $derived(products[$page.params.slug] || null);				<p class="category">{product.category}</p>
-const product = $derived(products[$page.params.slug] || null);				<p class="price">{product.price}</p>
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);				<p class="description">{product.description}</p>
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);				<div class="details">
-const product = $derived(products[$page.params.slug] || null);					<h3>Details</h3>
-const product = $derived(products[$page.params.slug] || null);					<ul>
-const product = $derived(products[$page.params.slug] || null);						{#each product.details as detail}
-const product = $derived(products[$page.params.slug] || null);							<li>{detail}</li>
-const product = $derived(products[$page.params.slug] || null);						{/each}
-const product = $derived(products[$page.params.slug] || null);					</ul>
-const product = $derived(products[$page.params.slug] || null);				</div>
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);				<div class="benefits">
-const product = $derived(products[$page.params.slug] || null);					<h3>Why You'll Love It</h3>
-const product = $derived(products[$page.params.slug] || null);					<ul>
-const product = $derived(products[$page.params.slug] || null);						{#each product.benefits as benefit}
-const product = $derived(products[$page.params.slug] || null);							<li>{benefit}</li>
-const product = $derived(products[$page.params.slug] || null);						{/each}
-const product = $derived(products[$page.params.slug] || null);					</ul>
-const product = $derived(products[$page.params.slug] || null);				</div>
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);				<button class="cta-button">Add to Cart</button>
-const product = $derived(products[$page.params.slug] || null);				<button class="secondary-button">Save for Later</button>
-const product = $derived(products[$page.params.slug] || null);			</div>
-const product = $derived(products[$page.params.slug] || null);		</div>
-const product = $derived(products[$page.params.slug] || null);	</div>
-const product = $derived(products[$page.params.slug] || null);{:else}
-const product = $derived(products[$page.params.slug] || null);	<div class="container">
-const product = $derived(products[$page.params.slug] || null);		<p>Product not found.</p>
-const product = $derived(products[$page.params.slug] || null);		<a href="/products">← Back to Products</a>
-const product = $derived(products[$page.params.slug] || null);	</div>
-const product = $derived(products[$page.params.slug] || null);{/if}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);<style>
-const product = $derived(products[$page.params.slug] || null);	.container {
-const product = $derived(products[$page.params.slug] || null);		max-width: 1200px;
-const product = $derived(products[$page.params.slug] || null);		margin: 0 auto;
-const product = $derived(products[$page.params.slug] || null);		padding: 3rem 2rem;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.breadcrumb {
-const product = $derived(products[$page.params.slug] || null);		display: flex;
-const product = $derived(products[$page.params.slug] || null);		gap: 0.5rem;
-const product = $derived(products[$page.params.slug] || null);		margin-bottom: 2rem;
-const product = $derived(products[$page.params.slug] || null);		font-size: 0.9rem;
-const product = $derived(products[$page.params.slug] || null);		color: #aaa;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.breadcrumb a {
-const product = $derived(products[$page.params.slug] || null);		color: #aaa;
-const product = $derived(products[$page.params.slug] || null);		text-decoration: none;
-const product = $derived(products[$page.params.slug] || null);		transition: color 0.3s;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.breadcrumb a:hover {
-const product = $derived(products[$page.params.slug] || null);		color: #fff;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.product-view {
-const product = $derived(products[$page.params.slug] || null);		display: grid;
-const product = $derived(products[$page.params.slug] || null);		grid-template-columns: 1fr 1fr;
-const product = $derived(products[$page.params.slug] || null);		gap: 4rem;
-const product = $derived(products[$page.params.slug] || null);		align-items: start;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.product-image {
-const product = $derived(products[$page.params.slug] || null);		position: sticky;
-const product = $derived(products[$page.params.slug] || null);		top: 2rem;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.product-image img {
-const product = $derived(products[$page.params.slug] || null);		width: 100%;
-const product = $derived(products[$page.params.slug] || null);		aspect-ratio: 1;
-const product = $derived(products[$page.params.slug] || null);		object-fit: cover;
-const product = $derived(products[$page.params.slug] || null);		background: #1a1a1a;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.product-info h1 {
-const product = $derived(products[$page.params.slug] || null);		font-size: 2rem;
-const product = $derived(products[$page.params.slug] || null);		margin-bottom: 0.5rem;
-const product = $derived(products[$page.params.slug] || null);		text-transform: uppercase;
-const product = $derived(products[$page.params.slug] || null);		letter-spacing: 0.05em;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.category {
-const product = $derived(products[$page.params.slug] || null);		color: #aaa;
-const product = $derived(products[$page.params.slug] || null);		font-size: 0.9rem;
-const product = $derived(products[$page.params.slug] || null);		text-transform: uppercase;
-const product = $derived(products[$page.params.slug] || null);		margin-bottom: 1rem;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.price {
-const product = $derived(products[$page.params.slug] || null);		font-size: 1.5rem;
-const product = $derived(products[$page.params.slug] || null);		font-weight: 700;
-const product = $derived(products[$page.params.slug] || null);		margin-bottom: 2rem;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.description {
-const product = $derived(products[$page.params.slug] || null);		font-size: 1.1rem;
-const product = $derived(products[$page.params.slug] || null);		margin-bottom: 2rem;
-const product = $derived(products[$page.params.slug] || null);		line-height: 1.8;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.details,
-const product = $derived(products[$page.params.slug] || null);	.benefits {
-const product = $derived(products[$page.params.slug] || null);		margin-bottom: 2rem;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.details h3,
-const product = $derived(products[$page.params.slug] || null);	.benefits h3 {
-const product = $derived(products[$page.params.slug] || null);		font-size: 1rem;
-const product = $derived(products[$page.params.slug] || null);		text-transform: uppercase;
-const product = $derived(products[$page.params.slug] || null);		letter-spacing: 0.05em;
-const product = $derived(products[$page.params.slug] || null);		margin-bottom: 1rem;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.details ul,
-const product = $derived(products[$page.params.slug] || null);	.benefits ul {
-const product = $derived(products[$page.params.slug] || null);		list-style: none;
-const product = $derived(products[$page.params.slug] || null);		padding: 0;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.details li,
-const product = $derived(products[$page.params.slug] || null);	.benefits li {
-const product = $derived(products[$page.params.slug] || null);		padding: 0.5rem 0;
-const product = $derived(products[$page.params.slug] || null);		padding-left: 1.5rem;
-const product = $derived(products[$page.params.slug] || null);		position: relative;
-const product = $derived(products[$page.params.slug] || null);		color: #aaa;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.details li::before,
-const product = $derived(products[$page.params.slug] || null);	.benefits li::before {
-const product = $derived(products[$page.params.slug] || null);		content: '•';
-const product = $derived(products[$page.params.slug] || null);		position: absolute;
-const product = $derived(products[$page.params.slug] || null);		left: 0;
-const product = $derived(products[$page.params.slug] || null);		color: #fff;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.cta-button,
-const product = $derived(products[$page.params.slug] || null);	.secondary-button {
-const product = $derived(products[$page.params.slug] || null);		display: inline-block;
-const product = $derived(products[$page.params.slug] || null);		padding: 1rem 2rem;
-const product = $derived(products[$page.params.slug] || null);		margin-right: 1rem;
-const product = $derived(products[$page.params.slug] || null);		margin-top: 1rem;
-const product = $derived(products[$page.params.slug] || null);		text-transform: uppercase;
-const product = $derived(products[$page.params.slug] || null);		font-size: 0.85rem;
-const product = $derived(products[$page.params.slug] || null);		letter-spacing: 0.05em;
-const product = $derived(products[$page.params.slug] || null);		cursor: pointer;
-const product = $derived(products[$page.params.slug] || null);		transition: all 0.3s ease;
-const product = $derived(products[$page.params.slug] || null);		border: none;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.cta-button {
-const product = $derived(products[$page.params.slug] || null);		background: #fff;
-const product = $derived(products[$page.params.slug] || null);		color: #0a0a0a;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.cta-button:hover {
-const product = $derived(products[$page.params.slug] || null);		opacity: 0.9;
-const product = $derived(products[$page.params.slug] || null);		transform: translateY(-2px);
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.secondary-button {
-const product = $derived(products[$page.params.slug] || null);		background: transparent;
-const product = $derived(products[$page.params.slug] || null);		border: 1px solid #333;
-const product = $derived(products[$page.params.slug] || null);		color: #aaa;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	.secondary-button:hover {
-const product = $derived(products[$page.params.slug] || null);		border-color: #fff;
-const product = $derived(products[$page.params.slug] || null);		color: #fff;
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);	@media (max-width: 768px) {
-const product = $derived(products[$page.params.slug] || null);		.product-view {
-const product = $derived(products[$page.params.slug] || null);			grid-template-columns: 1fr;
-const product = $derived(products[$page.params.slug] || null);			gap: 2rem;
-const product = $derived(products[$page.params.slug] || null);		}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);		.product-image {
-const product = $derived(products[$page.params.slug] || null);			position: static;
-const product = $derived(products[$page.params.slug] || null);		}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);		.product-info h1 {
-const product = $derived(products[$page.params.slug] || null);			font-size: 1.5rem;
-const product = $derived(products[$page.params.slug] || null);		}
-const product = $derived(products[$page.params.slug] || null);
-const product = $derived(products[$page.params.slug] || null);		.cta-button,
-const product = $derived(products[$page.params.slug] || null);		.secondary-button {
-const product = $derived(products[$page.params.slug] || null);			display: block;
-const product = $derived(products[$page.params.slug] || null);			width: 100%;
-const product = $derived(products[$page.params.slug] || null);			margin-right: 0;
-const product = $derived(products[$page.params.slug] || null);			margin-bottom: 1rem;
-const product = $derived(products[$page.params.slug] || null);		}
-const product = $derived(products[$page.params.slug] || null);	}
-const product = $derived(products[$page.params.slug] || null);</style>
+<script>
+	import { page } from '$app/stores';
+	import { fade } from 'svelte/transition';
+
+	// Product data - in real app, fetch from database
+	const products = {
+		'lighting-v1': {
+			title: 'LIGHTING-V1',
+			price: '€50',
+			image: '/images/products/lighting-v1.jpg',
+			category: 'Lighting',
+			description: 'Handmade minimal lighting object with brushed aluminum finish.',
+			details: [
+				'Dimensions: 25cm H × 15cm W',
+				'Materials: Brushed aluminum, matte black steel',
+				'Hand-assembled in Ljubljana',
+				'Limited edition — only 20 units',
+				'Ships within 5-7 business days',
+			],
+			benefits: [
+				'Unique, one-of-a-kind craftsmanship',
+				'Celebrates material imperfections',
+				'Minimal design aesthetic',
+				'Durable construction',
+			],
+		},
+		'pen-holder': {
+			title: 'Pen Holder',
+			price: '€35',
+			image: '/images/products/pen-holder.jpg',
+			category: 'Desk',
+			description: 'Steel and wood desk organizer for minimal workspaces.',
+			details: [
+				'Dimensions: 12cm H × 8cm W',
+				'Materials: Matte steel, oak wood',
+				'Hand-finished',
+				'Holds 6-8 pens/pencils',
+				'Ships within 3-5 business days',
+			],
+			benefits: [
+				'Keeps desk organized',
+				'Natural material palette',
+				'Perfect for minimal aesthetics',
+				'Long-lasting quality',
+			],
+		},
+		'candle-stand': {
+			title: 'Candle Stand',
+			price: '€45',
+			image: '/images/products/candle-stand.jpg',
+			category: 'Lighting',
+			description: 'Minimalist metal candle holder for ambient lighting.',
+			details: [
+				'Dimensions: 30cm H × 10cm W',
+				'Materials: Welded steel, powder coat',
+				'Hand-welded',
+				'Holds standard taper candles',
+				'Ships within 5-7 business days',
+			],
+			benefits: [
+				'Creates warm ambiance',
+				'Industrial aesthetic',
+				'Heavy-duty construction',
+				'Unique design',
+			],
+		},
+	};
+
+	let product = $derived(products[$page.params.slug] || null);
+</script>
+
+{#if product}
+	<div class="container" transition:fade={{ duration: 800 }}>
+		<div class="breadcrumb">
+			<a href="/products">Products</a>
+			<span>/</span>
+			<span>{product.title}</span>
+		</div>
+
+		<div class="product-view">
+			<div class="product-image">
+				<img src={product.image} alt={product.title} />
+			</div>
+
+			<div class="product-info">
+				<h1>{product.title}</h1>
+				<p class="category">{product.category}</p>
+				<p class="price">{product.price}</p>
+
+				<p class="description">{product.description}</p>
+
+				<div class="details">
+					<h3>Details</h3>
+					<ul>
+						{#each product.details as detail}
+							<li>{detail}</li>
+						{/each}
+					</ul>
+				</div>
+
+				<div class="benefits">
+					<h3>Why You'll Love It</h3>
+					<ul>
+						{#each product.benefits as benefit}
+							<li>{benefit}</li>
+						{/each}
+					</ul>
+				</div>
+
+				<button class="cta-button">Add to Cart</button>
+				<button class="secondary-button">Save for Later</button>
+			</div>
+		</div>
+	</div>
+{:else}
+	<div class="container">
+		<p>Product not found.</p>
+		<a href="/products">← Back to Products</a>
+	</div>
+{/if}
+
+<style>
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 3rem 2rem;
+	}
+
+	.breadcrumb {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 2rem;
+		font-size: 0.9rem;
+		color: #aaa;
+	}
+
+	.breadcrumb a {
+		color: #aaa;
+		text-decoration: none;
+		transition: color 0.3s;
+	}
+
+	.breadcrumb a:hover {
+		color: #fff;
+	}
+
+	.product-view {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: start;
+	}
+
+	.product-image {
+		position: sticky;
+		top: 2rem;
+	}
+
+	.product-image img {
+		width: 100%;
+		aspect-ratio: 1;
+		object-fit: cover;
+		background: #1a1a1a;
+	}
+
+	.product-info h1 {
+		font-size: 2rem;
+		margin-bottom: 0.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.category {
+		color: #aaa;
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		margin-bottom: 1rem;
+	}
+
+	.price {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 2rem;
+	}
+
+	.description {
+		font-size: 1.1rem;
+		margin-bottom: 2rem;
+		line-height: 1.8;
+	}
+
+	.details,
+	.benefits {
+		margin-bottom: 2rem;
+	}
+
+	.details h3,
+	.benefits h3 {
+		font-size: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: 1rem;
+	}
+
+	.details ul,
+	.benefits ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.details li,
+	.benefits li {
+		padding: 0.5rem 0;
+		padding-left: 1.5rem;
+		position: relative;
+		color: #aaa;
+	}
+
+	.details li::before,
+	.benefits li::before {
+		content: '•';
+		position: absolute;
+		left: 0;
+		color: #fff;
+	}
+
+	.cta-button,
+	.secondary-button {
+		display: inline-block;
+		padding: 1rem 2rem;
+		margin-right: 1rem;
+		margin-top: 1rem;
+		text-transform: uppercase;
+		font-size: 0.85rem;
+		letter-spacing: 0.05em;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		border: none;
+	}
+
+	.cta-button {
+		background: #fff;
+		color: #0a0a0a;
+	}
+
+	.cta-button:hover {
+		opacity: 0.9;
+		transform: translateY(-2px);
+	}
+
+	.secondary-button {
+		background: transparent;
+		border: 1px solid #333;
+		color: #aaa;
+	}
+
+	.secondary-button:hover {
+		border-color: #fff;
+		color: #fff;
+	}
+
+	@media (max-width: 768px) {
+		.product-view {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.product-image {
+			position: static;
+		}
+
+		.product-info h1 {
+			font-size: 1.5rem;
+		}
+
+		.cta-button,
+		.secondary-button {
+			display: block;
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 1rem;
+		}
+	}
+</style>

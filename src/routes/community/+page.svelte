@@ -52,8 +52,8 @@
 				<div class="contact-item">
 					<span class="label">Social</span>
 					<div class="social-links">
-						<a href="#">Instagram</a>
-						<a href="#">Pinterest</a>
+						<a href="https://instagram.com/studio42" target="_blank" rel="noopener">Instagram</a>
+						<a href="https://pinterest.com/boltarluka" target="_blank" rel="noopener">Pinterest</a>
 					</div>
 				</div>
 			</div>
@@ -99,28 +99,9 @@
 		letter-spacing: 0.05em;
 	}
 
-	.chat-section > p,
-	.faq-section > p {
+	.chat-section > p {
 		color: #aaa;
 		margin-bottom: 2rem;
-	}
-
-	.chat-placeholder {
-		background: #121212;
-		border: 2px dashed #333;
-		padding: 4rem 2rem;
-		text-align: center;
-		border-radius: 4px;
-		min-height: 400px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.chat-placeholder p {
-		margin: 0;
-		color: #666;
 	}
 
 	.faq-grid {
@@ -200,11 +181,6 @@
 
 		.community-header h1 {
 			font-size: 2rem;
-		}
-
-		.chat-placeholder {
-			padding: 2rem 1rem;
-			min-height: 250px;
 		}
 	}
 </style>
