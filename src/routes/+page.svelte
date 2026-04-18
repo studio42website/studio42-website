@@ -1,8 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
+	import { fade, scale } from 'svelte/transition';
 	import AOS from 'aos';
 	import 'aos/dist/aos.css';
-	import { Rune, Scale, Fade, Slide } from 'rune-scroller';
 	import ProductCard from '$lib/components/ProductCard.svelte';
 
 	onMount(() => {
@@ -14,31 +14,29 @@
 	<p>🚀 Official Launch: <strong>May 15, 2026</strong></p>
 </div>
 
-<section class="hero">
-	<Fade duration={1000} delay={200}>
-		<div class="hero-content">
-			<h1>Studio42</h1>
-			<p class="tagline">Handmade lighting objects. Material matters.</p>
-			<p class="description">
-				Minimal design. Celebrated imperfections. Limited editions.
-			</p>
-			<a href="/products" class="cta-button">Explore Products</a>
-		</div>
-	</Fade>
+<section class="hero" transition:fade={{ duration: 1000 }}>
+	<div class="hero-content">
+		<h1>Studio42</h1>
+		<p class="tagline">Handmade lighting objects. Material matters.</p>
+		<p class="description">
+			Minimal design. Celebrated imperfections. Limited editions.
+		</p>
+		<a href="/products" class="cta-button">Explore Products</a>
+	</div>
 </section>
 
 <section class="featured section">
 	<div class="container">
 		<h2>Featured Collection</h2>
 		<div class="products-grid">
-			<Scale duration={800} delay={400}>
+			<div transition:scale={{ duration: 800 }}>
 				<ProductCard 
 					title="LIGHTING-V1"
 					price="€50"
 					image="/images/products/lighting-v1.jpg"
 					href="/products/lighting-v1"
 				/>
-			</Scale>
+			</div>
 		</div>
 	</div>
 </section>

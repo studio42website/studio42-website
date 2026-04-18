@@ -7,7 +7,7 @@
 <header class="header">
 	<div class="container">
 		<div class="logo">
-			<a href="/">Studio42</a>
+			<a href="/">STUDIO42</a>
 		</div>
 		
 		<nav class="nav">
