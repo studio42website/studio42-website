@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-auto';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -7,12 +7,8 @@ const config = {
 		runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
 	},
 	kit: {
-		// Use Vercel adapter for deployment
-		adapter: adapter({
-			environments: {
-				list: ['iad1']
-			}
-		})
+		// Adapter auto-detects environment
+		adapter: adapter()
 	}
 };
 
