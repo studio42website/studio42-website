@@ -1,0 +1,103 @@
+
+> studio42@0.0.1 dev
+> vite dev
+
+9:29:10 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+
+  VITE v8.0.8  ready in 51796 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error:   Failed to scan for dependencies from entries:
+  /mnt/c/Users/User/Documents/studio42/src/routes/+layout.svelte
+/mnt/c/Users/User/Documents/studio42/src/routes/+page.svelte
+/mnt/c/Users/User/Documents/studio42/src/routes/about/+page.svelte
+/mnt/c/Users/User/Documents/studio42/src/routes/products/+page.svelte
+/mnt/c/Users/User/Documents/studio42/src/routes/blog/+page.svelte
+/mnt/c/Users/User/Documents/studio42/src/routes/community/+page.svelte
+/mnt/c/Users/User/Documents/studio42/src/routes/products/[slug]/+page.svelte
+
+  Build failed with 1 error:
+
+[plugin vite:dep-scan:resolve]
+Error: "./solid/Bars3" is not exported under the conditions ["module", "browser", "development", "svelte", "import"] from package /mnt/c/Users/User/Documents/studio42/node_modules/heroicons-svelte (see exports field in /mnt/c/Users/User/Documents/studio42/node_modules/heroicons-svelte/package.json)
+    at async EnvironmentPluginContainer.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30059:19)
+    at async ResolveIdContext.resolve (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30284:13)
+    at async ResolveIdContext.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/@sveltejs/kit/src/exports/vite/index.js:579:22)
+    at async EnvironmentPluginContainer.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30059:19)
+    at async resolve (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30745:16)
+    at async PluginContextImpl.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30875:23)
+    at async plugin (file:///mnt/c/Users/User/Documents/studio42/node_modules/rolldown/dist/shared/bindingify-input-options-DYpBf1OG.mjs:1079:16)
+    at async plugin.<computed> (file:///mnt/c/Users/User/Documents/studio42/node_modules/rolldown/dist/shared/bindingify-input-options-DYpBf1OG.mjs:1636:12)
+    at aggregateBindingErrorsIntoJsError (file:///mnt/c/Users/User/Documents/studio42/node_modules/rolldown/dist/shared/error-w0u7biK-.mjs:48:18)
+    at unwrapBindingResult (file:///mnt/c/Users/User/Documents/studio42/node_modules/rolldown/dist/shared/error-w0u7biK-.mjs:18:128)
+    at scan (file:///mnt/c/Users/User/Documents/studio42/node_modules/rolldown/dist/experimental-index.mjs:176:3)
+    at async Object.build (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30693:3)
+    at async scan (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30638:4)
+    at async file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:23178:15
+9:29:37 AM [vite-plugin-svelte] src/routes/+layout.svelte:9:1 Using `<slot>` to render parent content is deprecated. Use `{@render ...}` tags instead
+https://svelte.dev/e/slot_element_deprecated
+9:29:37 AM [vite-plugin-svelte] src/lib/components/Header.svelte:23:30 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+9:29:37 AM [vite-plugin-svelte] src/lib/components/Header.svelte:34:15 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+9:29:37 AM [vite-plugin-svelte] src/lib/components/Header.svelte:35:23 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+9:29:37 AM [vite-plugin-svelte] src/lib/components/Header.svelte:36:19 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+9:29:37 AM [vite-plugin-svelte] src/lib/components/Header.svelte:37:24 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+9:29:37 AM [vite-plugin-svelte] src/lib/components/Header.svelte:38:20 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+9:29:37 AM [vite-plugin-svelte] src/lib/components/Header.svelte:6:5 `menuOpen` is updated, but is not declared with `$state(...)`. Changing its value will not correctly trigger updates
+https://svelte.dev/e/non_reactive_update
+9:29:37 AM [vite] (ssr) Error when evaluating SSR module /src/routes/+page.svelte: src/lib/components/ProductCard.svelte:2:1 Cannot use `export let` in runes mode — use `$props()` instead
+https://svelte.dev/e/legacy_export_invalid
+  Plugin: vite-plugin-svelte:compile
+  File: src/lib/components/ProductCard.svelte:2:1
+   1 |  <script>
+   2 |    export let title = '';
+                                ^
+   3 |    export let price = '';
+   4 |    export let image = '';
+
+[1;31m[500] GET /[0m
+
+9:29:37 AM [vite] (ssr) Error when evaluating SSR module /src/routes/+layout.svelte: "./solid/Bars3" is not exported under the conditions ["module", "node", "development", "svelte", "import"] from package /mnt/c/Users/User/Documents/studio42/node_modules/heroicons-svelte (see exports field in /mnt/c/Users/User/Documents/studio42/node_modules/heroicons-svelte/package.json)
+  Plugin: builtin:vite-resolve
+      at async EnvironmentPluginContainer.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30059:19)
+      at async ResolveIdContext.resolve (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30284:13)
+      at async ResolveIdContext.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/@sveltejs/kit/src/exports/vite/index.js:579:22)
+      at async EnvironmentPluginContainer.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30059:19)
+      at async TransformPluginContext.resolve (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30284:13)
+      at async normalizeUrl (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27625:22)
+      at async file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27696:30
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27664:4)
+      at async EnvironmentPluginContainer.transform (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30143:14)
+9:29:37 AM [vite] (ssr) Error when evaluating SSR module /src/routes/+layout.svelte: "./solid/Bars3" is not exported under the conditions ["module", "node", "development", "svelte", "import"] from package /mnt/c/Users/User/Documents/studio42/node_modules/heroicons-svelte (see exports field in /mnt/c/Users/User/Documents/studio42/node_modules/heroicons-svelte/package.json)
+  Plugin: builtin:vite-resolve
+      at async EnvironmentPluginContainer.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30059:19)
+      at async ResolveIdContext.resolve (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30284:13)
+      at async ResolveIdContext.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/@sveltejs/kit/src/exports/vite/index.js:579:22)
+      at async EnvironmentPluginContainer.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30059:19)
+      at async TransformPluginContext.resolve (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30284:13)
+      at async normalizeUrl (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27625:22)
+      at async file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27696:30
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27664:4)
+      at async EnvironmentPluginContainer.transform (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30143:14)
+
+[1;31m[500] GET /[0m
+Error: "./solid/Bars3" is not exported under the conditions ["module", "node", "development", "svelte", "import"] from package /mnt/c/Users/User/Documents/studio42/node_modules/heroicons-svelte (see exports field in /mnt/c/Users/User/Documents/studio42/node_modules/heroicons-svelte/package.json)
+    at async EnvironmentPluginContainer.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30059:19)
+    at async ResolveIdContext.resolve (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30284:13)
+    at async ResolveIdContext.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/@sveltejs/kit/src/exports/vite/index.js:579:22)
+    at async EnvironmentPluginContainer.resolveId (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30059:19)
+    at async TransformPluginContext.resolve (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30284:13)
+    at async normalizeUrl (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27625:22)
+    at async file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27696:30
+    at async Promise.all (index 2)
+    at async TransformPluginContext.transform (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:27664:4)
+    at async EnvironmentPluginContainer.transform (file:///mnt/c/Users/User/Documents/studio42/node_modules/vite/dist/node/chunks/node.js:30143:14)
