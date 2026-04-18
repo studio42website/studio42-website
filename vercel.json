@@ -1,5 +1,7 @@
 {
   "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "outputDirectory": ".svelte-kit/output/client"
+  "outputDirectory": ".svelte-kit/output",
+  "env": {
+    "VITE_PUBLIC_BUILD_VERSION": "@git-sha"
+  }
 }
