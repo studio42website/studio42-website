@@ -1,6 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import ChatwootWidget from '$lib/components/ChatwootWidget.svelte';
+	import ChatWidget from '$lib/components/ChatWidget.svelte';
 </script>
 
 <div class="container" transition:fade={{ duration: 800 }}>
@@ -13,7 +13,7 @@
 		<div class="chat-section">
 			<h2>Chat with Us</h2>
 			<p>We read every message. Response time: usually within 24 hours.</p>
-			<ChatwootWidget />
+			<ChatWidget />
 		</div>
 
 		<div class="faq-section">
