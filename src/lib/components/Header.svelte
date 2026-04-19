@@ -1,13 +1,23 @@
 <script>
 	import { page } from '$app/stores';
+	import { toggleMute, isMuted } from '$lib/sound';
 
 	let { menuOpen = $bindable(false) } = $props();
+	let muted = $state(false);
+
+	function handleMute(e) {
+		e.stopPropagation();
+		muted = toggleMute();
+	}
 </script>
 
 <header class="header">
 	<div class="container">
 		<div class="logo">
 			<a href="/">STUDIO42</a>
+			<button class="sound-btn" class:muted onclick={handleMute} aria-label={muted ? 'Unmute' : 'Mute'}>
+				{muted ? '◻' : '◈'}
+			</button>
 		</div>
 		
 		<nav class="nav">
@@ -56,12 +66,37 @@
 		align-items: center;
 	}
 
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
 	.logo a {
 		font-size: 1.5rem;
 		font-weight: 700;
 		color: #fff;
 		text-decoration: none;
 		letter-spacing: 0.05em;
+	}
+
+	.sound-btn {
+		background: none;
+		border: none;
+		color: #555;
+		font-size: 0.85rem;
+		cursor: pointer;
+		padding: 0;
+		line-height: 1;
+		transition: color 0.2s;
+	}
+
+	.sound-btn:hover {
+		color: #fff;
+	}
+
+	.sound-btn.muted {
+		color: #333;
 	}
 
 	.nav {
