@@ -45,3 +45,6 @@ service-account*.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local scratchpad — for session-only files, never committed
+.local/

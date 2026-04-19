@@ -1,284 +1,220 @@
 <script>
-	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 
-	// Product data - in real app, fetch from database
-	const products = {
-		'lighting-v1': {
-			title: 'LIGHTING-V1',
-			price: '€50',
-			image: '/images/products/lighting-v1.jpg',
-			category: 'Lighting',
-			description: 'Handmade minimal lighting object with brushed aluminum finish.',
-			details: [
-				'Dimensions: 25cm H × 15cm W',
-				'Materials: Brushed aluminum, matte black steel',
-				'Hand-assembled in Ljubljana',
-				'Limited edition — only 20 units',
-				'Ships within 5-7 business days',
-			],
-			benefits: [
-				'Unique, one-of-a-kind craftsmanship',
-				'Celebrates material imperfections',
-				'Minimal design aesthetic',
-				'Durable construction',
-			],
-		},
-		'pen-holder': {
-			title: 'Pen Holder',
-			price: '€35',
-			image: '/images/products/pen-holder.jpg',
-			category: 'Desk',
-			description: 'Steel and wood desk organizer for minimal workspaces.',
-			details: [
-				'Dimensions: 12cm H × 8cm W',
-				'Materials: Matte steel, oak wood',
-				'Hand-finished',
-				'Holds 6-8 pens/pencils',
-				'Ships within 3-5 business days',
-			],
-			benefits: [
-				'Keeps desk organized',
-				'Natural material palette',
-				'Perfect for minimal aesthetics',
-				'Long-lasting quality',
-			],
-		},
-		'candle-stand': {
-			title: 'Candle Stand',
-			price: '€45',
-			image: '/images/products/candle-stand.jpg',
-			category: 'Lighting',
-			description: 'Minimalist metal candle holder for ambient lighting.',
-			details: [
-				'Dimensions: 30cm H × 10cm W',
-				'Materials: Welded steel, powder coat',
-				'Hand-welded',
-				'Holds standard taper candles',
-				'Ships within 5-7 business days',
-			],
-			benefits: [
-				'Creates warm ambiance',
-				'Industrial aesthetic',
-				'Heavy-duty construction',
-				'Unique design',
-			],
-		},
+	const PRODUCT = {
+		title: 'LIGHTING-V1',
+		price: '€50',
+		tagline: 'Handmade. 3D printed. Limited to 5.',
+		description: 'Geometric lattice lamp printed in translucent PETG. Warm LED core, USB-C rechargeable. Each unit is assembled by hand in Ljubljana — no two are identical.',
+		specs: [
+			'250 × 140 mm',
+			'USB-C rechargeable, 18650 battery',
+			'~6h battery life',
+			'3D printed PETG + resin diffuser',
+			'5 units only',
+		],
+		hero: '/images/products/lighting-v1/img_0264.jpg',
+		gallery: [
+			{ src: '/images/products/lighting-v1/img_0264.jpg', caption: 'Finished — warm glow' },
+			{ src: '/images/products/lighting-v1/img_0265.jpg', caption: '' },
+			{ src: '/images/products/lighting-v1/img_0266.jpg', caption: '' },
+			{ src: '/images/products/lighting-v1/img_0267.jpg', caption: '' },
+			{ src: '/images/products/lighting-v1/img_0260.jpg', caption: 'Making of' },
+			{ src: '/images/products/lighting-v1/img_0261.jpg', caption: '' },
+			{ src: '/images/products/lighting-v1/img_0262.jpg', caption: '' },
+			{ src: '/images/products/lighting-v1/img_0263.jpg', caption: '' },
+			{ src: '/images/products/lighting-v1/img_0259.jpg', caption: 'Components' },
+			{ src: '/images/products/lighting-v1/img_0258.jpg', caption: '' },
+			{ src: '/images/products/lighting-v1/img_0253.jpg', caption: 'LED module' },
+		],
 	};
 
-	let product = $derived(products[$page.params.slug] || null);
+	let active = $state(0);
 </script>
 
-{#if product}
-	<div class="container" transition:fade={{ duration: 800 }}>
-		<div class="breadcrumb">
-			<a href="/products">Products</a>
-			<span>/</span>
-			<span>{product.title}</span>
-		</div>
+<div class="page" transition:fade={{ duration: 600 }}>
 
-		<div class="product-view">
-			<div class="product-image">
-				<img src={product.image} alt={product.title} />
-			</div>
-
-			<div class="product-info">
-				<h1>{product.title}</h1>
-				<p class="category">{product.category}</p>
-				<p class="price">{product.price}</p>
-
-				<p class="description">{product.description}</p>
-
-				<div class="details">
-					<h3>Details</h3>
-					<ul>
-						{#each product.details as detail}
-							<li>{detail}</li>
-						{/each}
-					</ul>
-				</div>
-
-				<div class="benefits">
-					<h3>Why You'll Love It</h3>
-					<ul>
-						{#each product.benefits as benefit}
-							<li>{benefit}</li>
-						{/each}
-					</ul>
-				</div>
-
-				<button class="cta-button">Add to Cart</button>
-				<button class="secondary-button">Save for Later</button>
-			</div>
-		</div>
+	<div class="viewer">
+		<img src={PRODUCT.gallery[active].src} alt={PRODUCT.title} class="main-img" />
 	</div>
-{:else}
-	<div class="container">
-		<p>Product not found.</p>
-		<a href="/products">← Back to Products</a>
+
+	<div class="sidebar">
+		<h1>{PRODUCT.title}</h1>
+		<p class="price">{PRODUCT.price}</p>
+		<p class="tagline">{PRODUCT.tagline}</p>
+		<p class="desc">{PRODUCT.description}</p>
+
+		<ul class="specs">
+			{#each PRODUCT.specs as s}
+				<li>{s}</li>
+			{/each}
+		</ul>
+
+		<a href="mailto:s42contact@gmail.com?subject=LIGHTING-V1 Order" class="order-btn">
+			Order — {PRODUCT.price}
+		</a>
+		<p class="note">Email to order. Ships from Ljubljana.</p>
 	</div>
-{/if}
+
+	<div class="thumbs">
+		{#each PRODUCT.gallery as img, i}
+			<button
+				class="thumb"
+				class:active={active === i}
+				onclick={() => active = i}
+				aria-label="View photo {i + 1}"
+			>
+				<img src={img.src} alt="" />
+			</button>
+		{/each}
+	</div>
+
+</div>
 
 <style>
-	.container {
+	.page {
+		min-height: 100vh;
+		background: #000;
+		padding: 5rem 1.5rem 4rem;
+		display: grid;
+		grid-template-columns: 1fr 380px;
+		grid-template-rows: auto auto;
+		gap: 2rem 3rem;
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 3rem 2rem;
 	}
 
-	.breadcrumb {
+	.viewer {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.main-img {
+		width: 100%;
+		height: 70vh;
+		object-fit: contain;
+		background: #050505;
+		display: block;
+	}
+
+	.thumbs {
+		grid-column: 1;
+		grid-row: 2;
 		display: flex;
 		gap: 0.5rem;
-		margin-bottom: 2rem;
-		font-size: 0.9rem;
-		color: #aaa;
+		flex-wrap: wrap;
 	}
 
-	.breadcrumb a {
-		color: #aaa;
-		text-decoration: none;
-		transition: color 0.3s;
+	.thumb {
+		width: 60px;
+		height: 60px;
+		padding: 0;
+		border: 1px solid #1a1a1a;
+		background: none;
+		cursor: pointer;
+		overflow: hidden;
+		transition: border-color 0.15s;
 	}
 
-	.breadcrumb a:hover {
-		color: #fff;
-	}
-
-	.product-view {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 4rem;
-		align-items: start;
-	}
-
-	.product-image {
-		position: sticky;
-		top: 2rem;
-	}
-
-	.product-image img {
+	.thumb img {
 		width: 100%;
-		aspect-ratio: 1;
+		height: 100%;
 		object-fit: cover;
-		background: #1a1a1a;
+		display: block;
+		opacity: 0.5;
+		transition: opacity 0.15s;
 	}
 
-	.product-info h1 {
-		font-size: 2rem;
-		margin-bottom: 0.5rem;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
+	.thumb:hover img, .thumb.active img { opacity: 1; }
+	.thumb.active { border-color: #fff; }
+
+	.sidebar {
+		grid-column: 2;
+		grid-row: 1 / 3;
+		padding-top: 0.5rem;
 	}
 
-	.category {
-		color: #aaa;
-		font-size: 0.9rem;
+	h1 {
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.25em;
 		text-transform: uppercase;
-		margin-bottom: 1rem;
+		color: #fff;
+		margin: 0 0 0.75rem;
 	}
 
 	.price {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		font-weight: 700;
-		margin-bottom: 2rem;
+		color: #fff;
+		margin: 0 0 0.5rem;
 	}
 
-	.description {
-		font-size: 1.1rem;
-		margin-bottom: 2rem;
-		line-height: 1.8;
+	.tagline {
+		color: #444;
+		font-size: 0.75rem;
+		letter-spacing: 0.06em;
+		margin: 0 0 1.5rem;
 	}
 
-	.details,
-	.benefits {
-		margin-bottom: 2rem;
+	.desc {
+		color: #888;
+		font-size: 0.85rem;
+		line-height: 1.7;
+		margin: 0 0 1.5rem;
 	}
 
-	.details h3,
-	.benefits h3 {
-		font-size: 1rem;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin-bottom: 1rem;
-	}
-
-	.details ul,
-	.benefits ul {
+	.specs {
 		list-style: none;
 		padding: 0;
+		margin: 0 0 2rem;
+		border-top: 1px solid #111;
 	}
 
-	.details li,
-	.benefits li {
-		padding: 0.5rem 0;
-		padding-left: 1.5rem;
-		position: relative;
-		color: #aaa;
-	}
-
-	.details li::before,
-	.benefits li::before {
-		content: '•';
-		position: absolute;
-		left: 0;
-		color: #fff;
-	}
-
-	.cta-button,
-	.secondary-button {
-		display: inline-block;
-		padding: 1rem 2rem;
-		margin-right: 1rem;
-		margin-top: 1rem;
-		text-transform: uppercase;
-		font-size: 0.85rem;
+	.specs li {
+		padding: 0.6rem 0;
+		border-bottom: 1px solid #111;
+		color: #555;
+		font-size: 0.78rem;
 		letter-spacing: 0.05em;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		border: none;
 	}
 
-	.cta-button {
+	.order-btn {
+		display: block;
+		width: 100%;
+		padding: 0.9rem;
 		background: #fff;
-		color: #0a0a0a;
+		color: #000;
+		text-decoration: none;
+		text-align: center;
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		transition: opacity 0.2s;
+		margin-bottom: 0.75rem;
 	}
 
-	.cta-button:hover {
-		opacity: 0.9;
-		transform: translateY(-2px);
-	}
+	.order-btn:hover { opacity: 0.85; }
 
-	.secondary-button {
-		background: transparent;
-		border: 1px solid #333;
-		color: #aaa;
-	}
-
-	.secondary-button:hover {
-		border-color: #fff;
-		color: #fff;
+	.note {
+		color: #333;
+		font-size: 0.7rem;
+		text-align: center;
+		margin: 0;
+		letter-spacing: 0.05em;
 	}
 
 	@media (max-width: 768px) {
-		.product-view {
+		.page {
 			grid-template-columns: 1fr;
-			gap: 2rem;
+			grid-template-rows: auto auto auto;
+			padding: 5rem 1rem 3rem;
 		}
 
-		.product-image {
-			position: static;
-		}
+		.sidebar { grid-column: 1; grid-row: 2; }
+		.thumbs  { grid-column: 1; grid-row: 3; }
 
-		.product-info h1 {
-			font-size: 1.5rem;
-		}
-
-		.cta-button,
-		.secondary-button {
-			display: block;
-			width: 100%;
-			margin-right: 0;
-			margin-bottom: 1rem;
-		}
+		.main-img { height: 50vw; min-height: 280px; }
 	}
 </style>
