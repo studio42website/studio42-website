@@ -1,35 +1,66 @@
 :root {
-	/* Colors */
+	/* Colors — Dark Glyph + Neutral + Material */
 	--color-dark: #0a0a0a;
-	--color-bg: #121212;
-	--color-border: #222;
-	--color-text: #fff;
-	--color-text-muted: #aaa;
-	--color-accent: #fff;
+	--color-bg: #0f0f0f;
+	--color-surface: #1a1a1a;
+	--color-border: #2a2a2a;
+	--color-text: #f5f5f5;
+	--color-text-muted: #999;
+	--color-text-light: #666;
+	
+	/* Earth Tones — Material Focus */
+	--color-rust: #8B4513;
+	--color-terracotta: #C1440E;
+	--color-warm-gray: #A89968;
+	--color-natural-wood: #6B5B4A;
+	
+	/* Neon Accents — Edgy Contrast */
+	--color-cyan: #00D9FF;
+	--color-magenta: #FF006E;
+	--color-electric-blue: #0066FF;
+	
+	/* Primary Accent */
+	--color-accent: var(--color-cyan);
 
-	/* Spacing */
+	/* Spacing — Generous Whitespace */
 	--spacing-xs: 0.5rem;
 	--spacing-sm: 1rem;
 	--spacing-md: 1.5rem;
 	--spacing-lg: 2rem;
 	--spacing-xl: 3rem;
 	--spacing-2xl: 4rem;
+	--spacing-3xl: 5rem;
+	
+	/* Geometric Accents — No Images, Just Shapes & Color */
+	--accent-size-sm: 4px;
+	--accent-size-md: 8px;
+	--accent-size-lg: 16px;
 
-	/* Typography */
-	--font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-		sans-serif;
+	/* Typography — Bold, Modern, Geometric */
+	--font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
 	--font-mono: 'Courier New', monospace;
 	--font-size-sm: 0.875rem;
 	--font-size-base: 1rem;
 	--font-size-lg: 1.125rem;
 	--font-size-xl: 1.5rem;
 	--font-size-2xl: 2rem;
-	--font-size-3xl: 3rem;
+	--font-size-3xl: 2.5rem;
+	--font-size-4xl: 3.5rem;
+	
+	/* Font Weights — Bolder Headers */
+	--font-bold: 700;
+	--font-extrabold: 800;
 
 	/* Transitions */
 	--transition-fast: 0.15s ease;
 	--transition-base: 0.3s ease;
 	--transition-slow: 0.5s ease;
+	
+	/* Geometric Patterns */
+	--pattern-dot: radial-gradient(circle, var(--color-cyan) var(--accent-size-sm), transparent var(--accent-size-sm));
+	--pattern-grid: linear-gradient(90deg, var(--color-border) 1px, transparent 1px), 
+	                linear-gradient(0deg, var(--color-border) 1px, transparent 1px);
+	--pattern-grid-size: 20px;
 }
 
 * {
@@ -50,43 +81,56 @@ body {
 	overflow-x: hidden;
 }
 
-/* Typography */
+/* Typography — Bold, Geometric, Material */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	font-weight: 700;
-	letter-spacing: 0.02em;
-	margin-bottom: var(--spacing-md);
+	font-weight: var(--font-extrabold);
+	letter-spacing: 0.03em;
+	margin-bottom: var(--spacing-lg);
+	color: var(--color-text);
+	text-transform: uppercase;
+	word-spacing: 0.1em;
 }
 
 h1 {
-	font-size: var(--font-size-3xl);
+	font-size: var(--font-size-4xl);
+	margin-bottom: var(--spacing-2xl);
+	letter-spacing: 0.05em;
 }
 
 h2 {
-	font-size: var(--font-size-2xl);
+	font-size: var(--font-size-3xl);
+	margin-bottom: var(--spacing-xl);
 }
 
 h3 {
-	font-size: var(--font-size-xl);
+	font-size: var(--font-size-2xl);
+	margin-bottom: var(--spacing-lg);
 }
 
 p {
 	margin-bottom: var(--spacing-md);
 	color: var(--color-text-muted);
 	line-height: 1.8;
+	font-size: var(--font-size-base);
+	letter-spacing: 0.01em;
 }
 
 a {
 	color: var(--color-accent);
-	transition: color var(--transition-base);
+	transition: color var(--transition-base), text-shadow var(--transition-base);
+	text-decoration: none;
+	border-bottom: 2px solid var(--color-accent);
 }
 
 a:hover {
-	opacity: 0.8;
+	color: var(--color-magenta);
+	border-bottom-color: var(--color-magenta);
+	text-shadow: 0 0 8px rgba(255, 0, 110, 0.5);
 }
 
 /* Utilities */
