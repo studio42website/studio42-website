@@ -1,5 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
+	import PixelImage from '$lib/components/PixelImage.svelte';
 
 	const PRODUCT = {
 		title: 'LIGHTING-V1',
@@ -35,7 +36,7 @@
 <div class="page" transition:fade={{ duration: 600 }}>
 
 	<div class="viewer">
-		<img src={PRODUCT.gallery[active].src} alt={PRODUCT.title} class="main-img" />
+		<PixelImage src={PRODUCT.gallery[active].src} alt={PRODUCT.title} pixelSize={4} />
 	</div>
 
 	<div class="sidebar">
@@ -89,12 +90,8 @@
 		grid-row: 1;
 	}
 
-	.main-img {
-		width: 100%;
+	.viewer {
 		height: 70vh;
-		object-fit: contain;
-		background: #050505;
-		display: block;
 	}
 
 	.thumbs {
