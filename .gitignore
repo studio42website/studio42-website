@@ -21,3 +21,27 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Secrets — never commit these
+.ssh/
+*.pem
+*.key
+*.p12
+*_rsa
+*_rsa.pub
+*_ed25519
+*_ed25519.pub
+id_*
+credentials.json
+service-account*.json
+
+# IDE / editor
+.idea/
+*.swp
+*.swo
+
+# Logs (we don't commit local logs)
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

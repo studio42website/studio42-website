@@ -1,42 +1,58 @@
-# sv
+# Studio42
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Handmade lighting, Ljubljana. Launch site for **LIGHTING-V1** (May 15, 2026).
 
-## Creating a project
+**Live:** https://studio42-website.vercel.app
+**Repo:** https://github.com/studio42website/studio42-website
 
-If you're seeing this, you've probably already done this step. Congrats!
+---
 
-```sh
-# create a new project
-npx sv create my-app
+## Quick start
+
+```bash
+npm install
+npm run dev -- --host    # localhost:5173
 ```
 
-To recreate this project with the same configuration:
+## Deploy
 
-```sh
-# recreate this project
-npx sv@0.15.1 create --template minimal --no-types --add prettier --install npm .
+```bash
+git push origin main     # Vercel auto-deploys in ~1-2 min
 ```
 
-## Developing
+## Build locally
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
+```bash
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+---
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Stack
+
+SvelteKit 5 (runes mode), Vite 8, `svelte-seo`, Tawk.to live chat. Deployed on Vercel.
+
+---
+
+## Docs
+
+Everything about this project lives in `/docs`:
+
+- **[HANDOFF.md](docs/HANDOFF.md)** — what state we're in
+- **[ROADMAP.md](docs/ROADMAP.md)** — what's open, what's next
+- **[STRUCTURE.md](docs/STRUCTURE.md)** — codebase layout
+- **[DESIGN.md](docs/DESIGN.md)** — colors, type, spacing, rules
+- **[VOICE.md](docs/VOICE.md)** — copy voice
+- **[FIGMA.md](docs/FIGMA.md)** — design workflow
+- **[SERVICES.md](docs/SERVICES.md)** — Vercel, Tawk.to, GitHub, Domenca
+
+If you're Claude (or any AI assistant): `/CLAUDE.md` at the root is your primer. Read it first.
+
+---
+
+## Team
+
+- **Luka** — design, build
+- **Zorkow** — graphics
+- **Zarja** — PM, content
