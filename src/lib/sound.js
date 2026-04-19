@@ -21,7 +21,7 @@ let ambientStarted = false;
 export function isMuted() { return muted; }
 export function toggleMute() {
   muted = !muted;
-  if (ambient) ambient.volume = muted ? 0 : 0.12;
+  if (ambient) ambient.volume = muted ? 0 : 0.06;
   return muted;
 }
 
@@ -51,9 +51,9 @@ export function startAmbient() {
     // Fade in slowly
     let vol = 0;
     const fade = setInterval(() => {
-      vol = Math.min(vol + 0.01, muted ? 0 : 0.12);
+      vol = Math.min(vol + 0.005, muted ? 0 : 0.06);
       ambient.volume = vol;
-      if (vol >= 0.12) clearInterval(fade);
+      if (vol >= 0.06) clearInterval(fade);
     }, 100);
   }).catch(() => { ambientStarted = false; });
 }

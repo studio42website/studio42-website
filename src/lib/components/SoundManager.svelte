@@ -11,11 +11,7 @@
       started = true;
       startAmbient();
     }
-
-    const role = resolveSoundForTarget(e.target);
-    // Soft clicks are very quiet, don't play on every bare click
-    const vol = role === 'soft' ? 0.12 : 0.28;
-    playSound(role, vol);
+    // UI sounds disabled for now — paths preserved in sound.js
   }
 
   function handleMuteToggle(e) {
