@@ -1,23 +1,15 @@
 <script>
 	import { page } from '$app/stores';
-	import { toggleMute, isMuted } from '$lib/sound';
+	import SoundDeck from '$lib/components/SoundDeck.svelte';
 
 	let { menuOpen = $bindable(false) } = $props();
-	let muted = $state(false);
-
-	function handleMute(e) {
-		e.stopPropagation();
-		muted = toggleMute();
-	}
 </script>
 
 <header class="header">
 	<div class="container">
 		<div class="logo">
 			<a href="/">STUDIO42</a>
-			<button class="sound-btn" class:muted onclick={handleMute} aria-label={muted ? 'Unmute' : 'Mute'}>
-				{muted ? '◻' : '◈'}
-			</button>
+			<SoundDeck />
 		</div>
 		
 		<nav class="nav">
@@ -78,25 +70,6 @@
 		color: #fff;
 		text-decoration: none;
 		letter-spacing: 0.05em;
-	}
-
-	.sound-btn {
-		background: none;
-		border: none;
-		color: #555;
-		font-size: 0.85rem;
-		cursor: pointer;
-		padding: 0;
-		line-height: 1;
-		transition: color 0.2s;
-	}
-
-	.sound-btn:hover {
-		color: #fff;
-	}
-
-	.sound-btn.muted {
-		color: #333;
 	}
 
 	.nav {

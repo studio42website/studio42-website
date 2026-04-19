@@ -1,92 +1,98 @@
 // Studio42 Sound System ◈
-// Ambient: zorkow track loops site-wide at low volume
-// UI sounds: triggered by click type via event delegation
 
 const BASE = '/audio/';
 
-// Sound roles — swap numbers here once you've listened to them
-export const SOUNDS = {
-  nav:     'sound-card-1.mp3',   // nav link clicks
-  reveal:  'sound-card-2.mp3',   // image / product card clicks
-  confirm: 'sound-card-3.mp3',   // button / CTA clicks
-  home:    'sound-card-4.mp3',   // logo / home banner
-  soft:    'sound-card-5.mp3',   // generic background click
-};
+export const DECK = [
+  { id: 'sc01', label: 'SOUNDCARD01', file: 'sound-card-1.mp3', color: '#FF3B3B' },
+  { id: 'sc02', label: 'SOUNDCARD02', file: 'sound-card-2.mp3', color: '#00D9FF' },
+  { id: 'sc03', label: 'SOUNDCARD03', file: 'sound-card-3.mp3', color: '#39FF14' },
+  { id: 'sc04', label: 'SOUNDCARD04', file: 'sound-card-4.mp3', color: '#FF006E' },
+  { id: 'sc05', label: 'SOUNDCARD05', file: 'sound-card-5.mp3', color: '#FFD700' },
+  { id: 'sc06', label: 'SOUNDCARD06', file: 'zorkow-parqur.mp3', color: '#A855F7' },
+];
 
-const cache = {};
-let muted = false;
-let ambient = null;
-let ambientStarted = false;
+let current     = null;   // active Audio element
+let currentIdx  = -1;     // index in DECK
+let shuffleOn   = true;   // default ON
+let muted       = false;
+let started     = false;  // browser interaction gate
 
-export function isMuted() { return muted; }
+// callbacks for reactive UI updates
+let onTrackChange = () => {};
+let onShuffleChange = () => {};
+
+export function onStateChange(trackCb, shuffleCb) {
+  onTrackChange  = trackCb;
+  onShuffleChange = shuffleCb;
+}
+
+export function isMuted()    { return muted; }
+export function isStarted()  { return started; }
+export function getActive()  { return currentIdx; }
+export function getShuffle() { return shuffleOn; }
+
 export function toggleMute() {
   muted = !muted;
-  if (ambient) ambient.volume = muted ? 0 : 0.06;
+  if (current) current.volume = muted ? 0 : 0.45;
   return muted;
 }
 
-export function playSound(role, volume = 0.3) {
-  if (muted || typeof window === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const file = SOUNDS[role];
-  if (!file) return;
-
-  if (!cache[role]) cache[role] = new Audio(BASE + file);
-
-  const clip = cache[role].cloneNode();
-  clip.volume = volume;
-  clip.play().catch(() => {});
+function nextRandom(exclude) {
+  const opts = DECK.map((_, i) => i).filter(i => i !== exclude);
+  return opts[Math.floor(Math.random() * opts.length)];
 }
 
-export function startAmbient() {
-  if (ambientStarted || typeof window === 'undefined') return;
-  ambientStarted = true;
-
-  ambient = new Audio(BASE + 'zorkow-parqur.mp3');
-  ambient.loop = true;
-  ambient.volume = 0;
-
-  ambient.play().then(() => {
-    // Fade in slowly
-    let vol = 0;
-    const fade = setInterval(() => {
-      vol = Math.min(vol + 0.005, muted ? 0 : 0.06);
-      ambient.volume = vol;
-      if (vol >= 0.06) clearInterval(fade);
-    }, 100);
-  }).catch(() => { ambientStarted = false; });
-}
-
-// Called from SoundManager — resolves what sound to play based on what was clicked
-export function resolveSoundForTarget(el) {
-  // Walk up the DOM a few levels to catch wrapped elements
-  let node = el;
-  for (let i = 0; i < 5; i++) {
-    if (!node || node === document.body) break;
-
-    const tag  = node.tagName?.toLowerCase();
-    const cls  = node.className || '';
-    const href = node.getAttribute?.('href') || '';
-
-    // Logo / home banner
-    if ((tag === 'a' && href === '/') || cls.includes('logo')) return 'home';
-
-    // Buttons and CTAs
-    if (tag === 'button' || node.getAttribute?.('role') === 'button') return 'confirm';
-    if (tag === 'a' && node.closest?.('.btn, .cta, [class*="button"]')) return 'confirm';
-
-    // Product cards / images
-    if (tag === 'img' || cls.includes('product') || cls.includes('card') || tag === 'picture') return 'reveal';
-
-    // Nav links
-    if (tag === 'a' && node.closest?.('nav, header')) return 'nav';
-
-    // Any other link
-    if (tag === 'a') return 'nav';
-
-    node = node.parentElement;
+function playIdx(idx) {
+  if (current) {
+    current.pause();
+    current.onended = null;
   }
 
-  return 'soft';
+  currentIdx = idx;
+  current = new Audio(BASE + DECK[idx].file);
+  current.volume = muted ? 0 : 0.45;
+
+  current.onended = () => {
+    if (shuffleOn) {
+      const next = nextRandom(currentIdx);
+      playIdx(next);
+    } else {
+      currentIdx = -1;
+      onTrackChange(-1);
+    }
+  };
+
+  current.play().catch(() => {});
+  onTrackChange(idx);
+}
+
+export function playTrack(idx) {
+  started = true;
+  playIdx(idx);
+}
+
+export function stopAll() {
+  if (current) {
+    current.pause();
+    current.onended = null;
+    current = null;
+  }
+  currentIdx = -1;
+  onTrackChange(-1);
+}
+
+export function toggleShuffle() {
+  shuffleOn = !shuffleOn;
+  if (shuffleOn && currentIdx === -1 && started) {
+    playIdx(nextRandom(-1));
+  }
+  onShuffleChange(shuffleOn);
+  return shuffleOn;
+}
+
+// Called on first user interaction — starts shuffle if still default ON
+export function initOnInteraction() {
+  if (started) return;
+  started = true;
+  if (shuffleOn) playIdx(nextRandom(-1));
 }
