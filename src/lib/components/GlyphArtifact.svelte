@@ -1,5 +1,6 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
 
   let { cols = 32, rows = 16, color = '#00E5A0', speed = 1200 } = $props();
 
@@ -56,7 +57,7 @@
   });
 
   onDestroy(() => {
-    cancelAnimationFrame(rafId);
+    if (browser) cancelAnimationFrame(rafId);
   });
 </script>
 

@@ -13,6 +13,7 @@
    * Effective resolution at 60×20 chars: 120×80 "pixels".
    */
   import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
 
   let { cols = 60, rows = 20, color = '#fff', threshold = 0.50, speed = 60 } = $props();
 
@@ -72,7 +73,7 @@
     rafId = requestAnimationFrame(tick);
   });
 
-  onDestroy(() => cancelAnimationFrame(rafId));
+  onDestroy(() => { if (browser) cancelAnimationFrame(rafId); });
 </script>
 
 <pre
