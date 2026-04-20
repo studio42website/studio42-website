@@ -1,5 +1,6 @@
 <script>
   import PixelCanvas from '$lib/components/PixelCanvas.svelte';
+  import BrailleCanvas from '$lib/components/BrailleCanvas.svelte';
 </script>
 
 <div class="panels">
@@ -12,6 +13,9 @@
   </a>
   <a href="/products/lighting-v1" class="panel" aria-label="View LIGHTING-V1">
     <PixelCanvas mode="ocean" />
+    <div class="braille-layer" aria-hidden="true">
+      <BrailleCanvas cols={72} rows={48} color="#4A7FA8" threshold={0.7} speed={900} />
+    </div>
     <div class="panel-label panel-label--right">
       <span class="label-name">SHOP →</span>
       <span class="label-sub">€50 · Handmade</span>
@@ -81,4 +85,16 @@
   }
 
   .panel:hover .label-sub { color: #888; }
+
+  .braille-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 0.5;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
 </style>
