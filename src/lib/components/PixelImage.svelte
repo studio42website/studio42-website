@@ -16,6 +16,8 @@
     [80,  80,  80 ], // dark grey
     [0,   150, 110], // dark cyan
     [140, 80,  30 ], // dark orange
+    [192, 192, 192], // chrome / silver
+    [155, 165, 175], // steel blue-grey
   ];
 
   function nearestColor(r, g, b) {
